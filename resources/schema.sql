@@ -1,0 +1,49 @@
+CREATE SCHEMA sde;
+
+ALTER database evedb SET search_path TO public, sde;
+
+DROP TABLE apiKey;
+DROP TABLE account;
+DROP TABLE systemCostIndex;
+DROP TABLE price;
+DROP TABLE adjustedPrice;
+DROP TABLE job;
+DROP TABLE inventionChance;
+
+CREATE TABLE systemCostIndex(
+id SERIAL PRIMARY KEY,
+invention DOUBLE PRECISION,
+manufacturing DOUBLE PRECISION,
+research_material DOUBLE PRECISION,
+research_time DOUBLE PRECISION,
+copying DOUBLE PRECISION
+);
+
+CREATE TABLE account(
+id SERIAL PRIMARY KEY,
+email TEXT NOT NULL UNIQUE,
+password TEXT NOT NULL
+);
+
+CREATE TABLE apiKey(
+id SERIAL PRIMARY KEY,
+account_id INT REFERENCES account(id) NOT NULL
+);
+
+CREATE TABLE price(
+id BIGINT NOT NULL PRIMARY KEY,
+buy NUMERIC NOT NULL,
+sell NUMERIC NOT NULL
+);
+
+CREATE TABLE adjustedPrice(
+id BIGINT NOT NULL PRIMARY KEY,
+adjustedPrice NUMERIC NOT NULL,
+averagePrice NUMERIC
+);
+
+CREATE TABLE job(
+id TEXT NOT NULL PRIMARY KEY,
+ran TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_DATE
+);
+

@@ -1,0 +1,76 @@
+
+Stations:
+
+ stationid | operationid | solarsystemid |                        stationname                         |   operationname    
+-----------+-------------+---------------+------------------------------------------------------------+--------------------
+  60002992 |           4 |      30002817 | Aramachi VI - Moon 11 - Caldari Constructions Foundry      | Foundry
+  60000835 |           7 |      30002817 | Aramachi VI - Moon 4 - Minedrill Mining Outpost            | Mining Outpost
+  60000832 |           7 |      30002817 | Aramachi V - Moon 1 - Minedrill Mining Outpost             | Mining Outpost
+  60000727 |           7 |      30002817 | Aramachi VI - Moon 6 - Poksu Mineral Group Mining Outpost  | Mining Outpost
+  60000724 |           7 |      30002817 | Aramachi VII - Moon 8 - Poksu Mineral Group Mining Outpost | Mining Outpost
+  60003781 |          13 |      30002817 | Aramachi II - Moon 4 - Caldari Navy Testing Facilities     | Testing Facilities
+  60000424 |          26 |      30002817 | Aramachi II - Moon 2 - Ytiri Storage                       | Storage
+
+Modifiers:
+Operations 	Manufacturing output multiplier 	Research output multiplier
+Amarr Factory Outpost 	0.5 	0.6
+Manufacturing (Nullsec conquerable) 	0.6 	0.8
+Caldari Research Outpost 	0.6 	0.5
+Gallente Administrative, Minmatar Service Outposts 	0.6 	0.6
+Cloning (Nullsec conquerable) 	0.7 	0.7
+Factory, Shipyard, Assembly Plant, Foundry, Construction Plant, Biotech Production 	0.95 	0.98
+Warehouse, Chemical Storage, Academy, School 	0.97 	0.98
+Testing Facilities, Reprocessing Facility, Chemical Refinery 	0.97 	0.97
+Biotech Research Center, Research Center, Biohazard Containment Facility 	0.98 	0.95
+[All others] 	0.98 	0.98
+
+Station modifiers:
+0.95 * 0.98 * 0.98 * 0.98 * 0.97 * 0.97 = 0.8412891751599999
+
+
+
+(println (* 0.95
+   0.97
+   0.97))
+
+  0.8329630142511999
+
+(* 0.95 0.97 0.97)
+
+dapp={
+"Factory, Shipyard, Assembly Plant, Foundry, Construction Plant, Biotech Production":0.95,
+"Warehouse, Chemical Storage, Academy, School":0.97,
+"Testing Facilities, Reprocessing Facility, Chemical Refinery":0.97
+}
+
+evedb=> select * from staservices;
+ serviceid |      servicename       |           description            
+-----------+------------------------+----------------------------------
+         1 | Bounty Missions        | 
+         2 | Assassination Missions | 
+         4 | Courier Missions       | 
+         8 | Interbus               | 
+        16 | Reprocessing Plant     | 
+        32 | Refinery               | 
+        64 | Market                 | 
+       128 | Black Market           | 
+       256 | Stock Exchange         | 
+       512 | Cloning                | 
+      1024 | Surgery                | 
+      2048 | DNA Therapy            | 
+      4096 | Repair Facilities      | 
+      8192 | Factory                | 
+     16384 | Laboratory             | 
+     32768 | Gambling               | 
+     65536 | Fitting                | 
+    131072 | Paintshop              | 
+    262144 | News                   | 
+    524288 | Storage                | 
+   1048576 | Insurance              | Used to buy insurance for ships.
+   2097152 | Docking                | 
+   4194304 | Office Rental          | 
+   8388608 | Jump Clone Facility    | 
+  16777216 | Loyalty Point Store    | 
+  33554432 | Navy Offices           | 
+  67108864 | Security Office        | 
+(27 rows)

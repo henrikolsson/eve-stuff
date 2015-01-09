@@ -172,3 +172,15 @@
                 runs)]
     (- (* sell (- 1.0 0.014))
        (* (:materials cost) 1.0065))))
+
+(defn get-station-modifier []
+  (
+(get-cost-index ))
+
+
+(doseq
+    [station (select "staStations"
+                     (where
+                      {:solarSystemId (:solarsystemid (get-system-by-name "Nonni"))}))]
+  (println station))
+
